@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Diwali Celebration</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button onclick="lightRocket()">Launch</button>
+        <button onclick="reset()">Reset</button>
+
+        <div class="bottle"></div>
+
+        <div id="rocket" class="rocket">
+            <div id="rocket-stripes">
+                <div class="stripes"></div>
+            </div>
+            <div class="stick"></div>
+            <div class="cap"></div>
+            <div class="fuse"></div>
+            <div id="sparks" class="hidden"></div>
+            <div id="long-sparks" class="hidden"></div>
+        </div>
+
+
+        <div id="fireworks" class="fireworks hidden">
+            <div class="layer1"></div>
+            <div class="layer1"></div>
+            <div class="layer1"></div>
+            <div class="layer1"></div>
+            <div class="layer1"></div>
+            <div class="layer1"></div>
+            <div class="layer2"></div>
+            <div class="layer3"></div>
+            <div class="layer4"></div>
+            <div class="layer5"></div>
+        </div>
+
+        <div id="wish" class="wish hidden"><h3>Happy Diwali</h3></div>
+
+        <script>
+            const numberOfCopies = 6; 
+            const container = document.getElementById('rocket-stripes');
+    
+            for (let i = 0; i < numberOfCopies; i++) {
+                const newBox = document.createElement('div');
+                newBox.classList.add('stripes');
+                container.appendChild(newBox);
+            }
+
+            const sparks = document.getElementById('sparks');
+            if(sparks){
+                for(let i=0;i<numberOfCopies;i++) {
+                const spark = document.createElement('div');
+                spark.classList.add('spark');
+                sparks.append(spark);
+            }
+            }
+
+            const longSparks = document.getElementById('long-sparks');
+            if(longSparks){
+                for(let i=0;i<4;i++){
+                const longSpark = document.createElement('div');
+                longSpark.classList.add('long-spark');
+                longSparks.append(longSpark);
+            }
+            }
+
+            function lightRocket(){
+                const sparks = document.getElementById('sparks');
+                sparks.classList.remove('hidden');
+                setTimeout(fire, 2000);
+            }
+
+            function fire(){
+                const longSparks = document.getElementById('long-sparks');
+                longSparks.classList.remove('hidden');
+                setTimeout(launch, 1000);
+            }
+
+            function launch(){
+                const rocket = document.getElementById('rocket');
+                rocket.classList.add('launch-rocket');
+                setTimeout(fireworks,2500);
+            }
+
+            function fireworks(){
+                const fireworks = document.getElementById("fireworks");
+                const rocket = document.getElementById('rocket');
+                rocket.classList.add('hidden');
+                fireworks.classList.remove('hidden');
+                const wish = document.getElementById('wish');
+                
+                wish.classList.remove('hidden');
+
+            }
+
+            function reset(){
+                location.reload(true);
+            }
+
+        </script>
+    </body>
+</html>
